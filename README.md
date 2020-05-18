@@ -2,6 +2,11 @@
 
 ![Screenshot](screenshot-3.png)
 
+```
+npm install
+npm run start
+```
+
 ## But why?
 The major problem when doing SSR is that you will need to ship the DB data two times to the client:
 
