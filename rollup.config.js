@@ -3,6 +3,7 @@ const path = require('path');
 const svelte = require('rollup-plugin-svelte');
 const resolve = require('@rollup/plugin-node-resolve');
 const virtual = require('@rollup/plugin-virtual');
+const {terser} = require('rollup-plugin-terser');
 
 // Hydrated components
 
@@ -29,6 +30,7 @@ module.exports = components.map((component) => ({
 		resolve({
 			browser: true,
 			dedupe: ['svelte']
-		})
+		}),
+		terser()
 	]
 }));

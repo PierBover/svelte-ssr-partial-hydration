@@ -17,6 +17,13 @@ For certain use cases this can be very wasteful.
 
 As an example see [Sapper HN](https://hn.svelte.dev/item/23223335). Right-click, open the source, and scroll to the bottom. There is a **huge** chunk of JSON. This is only an illustrative example though because Sapper only uses SSR in the first request.
 
+If you run this proof of concept and look at the generated source you'll see only the data for the hydrated components is included in the JSON object:
+```
+const HYDRATION_DATA = {"Colors_1":{"colors":["Red","Blue","Yellow"]},"Colors_2":{"colors":["Purple","Magenta","Orange"]}};
+```
+Also, only the JavaScript for the hydrated components is loaded:
+![Network](network.png)
+
 ## Here be dragons
 
 This is a very basic proof of concept and doesn't solve a number of things:
