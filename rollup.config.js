@@ -4,19 +4,21 @@ const svelte = require('rollup-plugin-svelte');
 const resolve = require('@rollup/plugin-node-resolve');
 const virtual = require('@rollup/plugin-virtual');
 
-// Hydrated component
+// Hydrated components
 
-module.exports = {
-	input: 'Colors',
+const components = ['Colors', 'Now'];
+
+module.exports = components.map((component) => ({
+	input: component,
 	output: {
 		format: 'iife',
-		file: path.resolve(__dirname, 'server/static/Colors.js')
+		file: path.resolve(__dirname, 'server/static/', component + '.js')
 	},
 	plugins: [
 		virtual({
-			Colors: `
-				import Colors from '${path.resolve(__dirname,'server/components/Colors.svelte')}';
-				window.Colors = Colors;
+			[component]: `
+				import ${component} from '${path.resolve(__dirname,'server/components/', component + '.svelte')}';
+				window.${component} = ${component};
 			`
 		}),
 		svelte({
@@ -29,4 +31,4 @@ module.exports = {
 			dedupe: ['svelte']
 		})
 	]
-};
+}));

@@ -27,12 +27,19 @@ fastify.route({
 
 		const data = {
 			fruits: ['Mango', 'Apple', 'Lemon'],
-			Colors: {
-				colors: ['Red', 'Blue', 'Yellow']
+			hydration: {
+				Colors_1: {
+					colors: ['Red', 'Blue', 'Yellow']
+				},
+				Colors_2: {
+					colors: ['Purple', 'Magenta', 'Orange']
+				}
 			}
 		}
 
 		const {html, head, css} = Page.render({serverData: data});
+
+		const components = ['Colors', 'Now'];
 
 		const pageHtml = `
 			<html>
@@ -45,17 +52,32 @@ fastify.route({
 				<body>
 					${html}
 					<script>
-						const PROPS_Colors = ${JSON.stringify(data.Colors)};
+						const HYDRATION_DATA = ${JSON.stringify(data.hydration)};
+						let totalLoadedScripts = 0;
 
 						function hydrate () {
-							new Colors({
-								target: document.getElementById('Colors'),
-								hydrate: true,
-								props: PROPS_Colors
-							});
+
+							totalLoadedScripts ++;
+
+							if (totalLoadedScripts < ${components.length}) return;
+
+							const components = {${components.map(component => `${component}:${component}`).join()}};
+
+							const elements = document.getElementsByClassName('Hydrate-me');
+
+							for (let element of elements) {
+								const component = element.getAttribute('data-component');
+								const instanceId = element.getAttribute('data-instance-id');
+
+								new (components[component])({
+									target: element,
+									hydrate: true,
+									props: HYDRATION_DATA[instanceId]
+								});
+							}
 						}
 					</script>
-					<script defer onload="hydrate()" src="Colors.js"></script>
+					${components.map(component => `<script defer onload="hydrate()" src="${component}.js"></script>`).join('')}
 				</body>
 			</html>
 		`;

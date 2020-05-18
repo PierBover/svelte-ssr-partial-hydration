@@ -1,6 +1,9 @@
 <script>
 	import Colors from './Colors.svelte';
+	import Hydrate from './Hydrate.svelte';
+	import Now from './Now.svelte';
 	export let serverData;
+	const hydrationData = serverData.hydration;
 </script>
 
 <h1>Home</h1>
@@ -12,9 +15,11 @@
 	{/each}
 </ul>
 
-<div id="Colors">
-	<Colors colors={serverData.Colors.colors}/>
-</div>
+<Hydrate component={Colors} name="Colors" instanceId="Colors_1" data={hydrationData}/>
+<Hydrate component={Colors} name="Colors"  instanceId="Colors_2" data={hydrationData}/>
+
+<h2>This below is a hydrated component without data:</h2>
+<Hydrate component={Now} name="Now"/>
 
 <style>
 :global(body) {
