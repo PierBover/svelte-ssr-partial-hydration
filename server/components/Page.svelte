@@ -4,7 +4,7 @@
 </script>
 
 <h1>Home</h1>
-<p>This is static content with server data.</p>
+<p>This is static content with server data that will not be duplicated in the page.</p>
 
 <ul>
 	{#each serverData.fruits as fruit}

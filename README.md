@@ -1,5 +1,7 @@
 # Svelte SSR partial hydration proof of concept
 
+![Screenshot](screenshot.png)
+
 ## But why?
 The major problem when doing SSR is that you will need to ship the DB data two times to the client:
 

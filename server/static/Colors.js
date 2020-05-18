@@ -359,7 +359,7 @@
     			t0 = text("Hydrated component");
     			t1 = space();
     			div0 = element("div");
-    			t2 = text("Some server data:");
+    			t2 = text("Some server data that will be duplicated in the page:");
     			t3 = space();
     			ul = element("ul");
 
@@ -382,7 +382,7 @@
     			t1 = claim_space(div1_nodes);
     			div0 = claim_element(div1_nodes, "DIV", {});
     			var div0_nodes = children(div0);
-    			t2 = claim_text(div0_nodes, "Some server data:");
+    			t2 = claim_text(div0_nodes, "Some server data that will be duplicated in the page:");
     			div0_nodes.forEach(detach);
     			t3 = claim_space(div1_nodes);
     			ul = claim_element(div1_nodes, "UL", {});

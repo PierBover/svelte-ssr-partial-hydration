@@ -13,7 +13,7 @@
 <div class="Colors">
 	<h2>Hydrated component</h2>
 
-	<div>Some server data:</div>
+	<div>Some server data that will be duplicated in the page:</div>
 	<ul>
 		{#each colors as color}
 			<li>{color}</li>
