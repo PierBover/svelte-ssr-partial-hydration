@@ -1,0 +1,35 @@
+{
+  "name": "svelte-ssr-partial-hydration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "engines": {
+    "node": "12.x"
+  },
+  "scripts": {
+    "rollup-build": "rollup -c",
+    "start": "npm run rollup-build && node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://pierbover@github.com/PierBover/svelte-ssr-partial-hydration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PierBover/svelte-ssr-partial-hydration/issues"
+  },
+  "homepage": "https://github.com/PierBover/svelte-ssr-partial-hydration#readme",
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "@rollup/plugin-virtual": "^2.0.1",
+    "fastify": "^2.13.1",
+    "fastify-compress": "^2.0.1",
+    "fastify-static": "^2.6.0",
+    "nodemon": "^2.0.3",
+    "rollup": "^2.6.1",
+    "rollup-plugin-svelte": "^5.2.1",
+    "svelte": "^3.20.1"
+  }
+}
